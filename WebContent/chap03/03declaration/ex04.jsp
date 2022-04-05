@@ -17,9 +17,10 @@ public int gugudan(int i, int j){
 	<h1>구구단 2 ~ 9단</h1>
 	<%
 		for(int i = 2; i<10; i++){ 
+			out.write("<h1>" + i + "단 </h1>");
 			for(int j=1; j<10; j++){
 				out.print(i + " x " + j + " = " + gugudan(i, j));
-				out.print("<br>");
+				out.write("<br>");
 			}
 		}
 	%>
