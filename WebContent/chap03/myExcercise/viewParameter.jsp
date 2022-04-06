@@ -22,22 +22,36 @@
 	Map<String, String[]> passwordMap = request.getParameterMap();
 	String[] passwordResign = passwordMap.get("password");
 	if(passwordMap != null){
-		if(passwordResign[0]!=passwordResign[1]){
+		if(!passwordResign[0].equals(passwordResign[1])){
 			out.println("비밀번호 재설정해야함");
 		}else{
 			out.println("비밀번호 설정확인");
+			out.write("<br />");
 			out.println("확정비밀번호 : " + passwordResign[0]);
+			out.write("<br />");
 		}
 	}
 	%>
-	아이디 =
-	<%=request.getParameter("id")%>
+	
+	이름 =
+	<%=request.getParameter("name")%>
 	<br />
-	아이디 =
-	<%=request.getParameter("id")%>
+	
+	생년월일 =
+	<%=request.getParameter("birth")%>
 	<br />
-	아이디 =
-	<%=request.getParameter("id")%>
+	
+	성별 =
+	<%=request.getParameter("sex")%>
 	<br />
+	
+	확인 이메일 =
+	<%=request.getParameter("email")%>
+	<br />
+	
+	휴대전화 번호 =
+	<%=request.getParameter("tel")%>
+	<br />
+
 </body>
 </html>

@@ -26,7 +26,7 @@
 		<input type="radio" name="sex" value="man" /> 남 <br />
 		<input type="radio" name="sex"value="girl" /> 여 <br />
 		<h3>본인 확인 이메일</h3>
-		<input type="email" name="" id="" /> <br /> 
+		<input type="email" name="email" id="" /> <br /> 
 		<h3>휴대전화</h3>
 		<input type="tel" name="tel"/> <br />
 		
