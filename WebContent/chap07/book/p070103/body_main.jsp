@@ -11,14 +11,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+include 전 name 파라미터 값: <%=request.getParameter("name") %>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<hr />
+
+<jsp:include page="body_sub.jsp">
+	<jsp:param value="최범균" name="name"/>
+</jsp:include>
+
+<hr />
+include 후 name 파라미터 값: <%=request.getParameter("name") %>
+
 </body>
 </html>

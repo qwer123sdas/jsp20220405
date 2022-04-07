@@ -11,14 +11,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+<p>ex11.jsp</p>
+<%-- 데이터 전달 시 request 파라미터 사용 --%>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+
+<%--querystring으로 정보를 전달하는 방법(비추천) --%>
+<jsp:include page="ex12.jsp?name=hello world+한글&age=30"></jsp:include>
+
+<%-- jsp param 표준액션태그 사용하여 정보를 전달하는 방법(추천) --%>
+<jsp:include page="ex12.jsp">
+	<jsp:param name="name" value="hello world+한글" />
+	<jsp:param name="age" value="90" />
+</jsp:include>
 </body>
 </html>

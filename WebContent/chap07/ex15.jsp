@@ -11,14 +11,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<%-- param액션 태그의 파라미터 include되는 페이지에서만 사용가능 --%>
+<jsp:include page="ex16.jsp">
+	<jsp:param value="999" name="age"/>
+</jsp:include>
+
+<div>
+	<p>ex15</p>
+	<p><%=request.getParameter("age") %></p>
+</div>a6 
+
+<hr />
+
+<%-- value의 값이 너무 클 경우 --%>
+<%
+	String value1 = "너무 큰 값이 들어갈 경우 태그  body로 작성하면안되고  expression으로 사용";
+%>
+
+
+<jsp:include page="ex16.jsp">
+	<jsp:param name="detail" value="<%=value1 %>"/>
+</jsp:include>
 </body>
 </html>

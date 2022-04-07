@@ -11,14 +11,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
-
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+	<%
+		int number = 10;
+	%>
+	<%@include file="includee.jsp" %>
+	공통변수 DATAFOLDER = "<%= dataForder %>"	
 </body>
 </html>

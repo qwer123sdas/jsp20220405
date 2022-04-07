@@ -11,14 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
-
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<%
+	Enumeration headerEnum = request.getHeaderNames();
+	while(headerEnum.hasMoreElements()){
+		String headerName = (String)headerEnum.nextElement();
+		String headerValue = request.getHeader(headerName);
+	%>
+	<%=headerName %> = <%=headerValue %>
+	<%	
+	}
+%>
 </body>
 </html>

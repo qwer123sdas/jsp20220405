@@ -11,14 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
-
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+	main.jsp에서 생성한 내용
+	<jsp:include page = "sub.jsp"/>
+	include 이후의 내용
 </body>
 </html>

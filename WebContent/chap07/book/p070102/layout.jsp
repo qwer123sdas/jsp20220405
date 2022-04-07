@@ -11,14 +11,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
-
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<table width="400" border="1" cellspacing="0">
+<tr>
+	<td colspan="2">
+		<jsp:include page="top.jsp" flush="false"/>
+	</td>
+</tr>
+<tr>
+	<td width="100" valign="top">
+		<jsp:include page="left.jsp"></jsp:include>
+	</td>
+	<td width="300" valign="top">
+		레이아웃1
+		<br><br><br />
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<jsp:include page="bottom.jsp"></jsp:include>
+	</td>
+</tr>
+</table>
 </body>
 </html>

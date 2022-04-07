@@ -11,14 +11,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="module/header02.jsp"></jsp:include>
 <div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
+	<h1>Lorem.</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe accusamus ipsum laborum nulla quod tempore totam quia eius nesciunt quidem delectus neque laboriosam obcaecati culpa commodi quas ex eum hic.</p>
 </div>
-
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
 </body>
 </html>

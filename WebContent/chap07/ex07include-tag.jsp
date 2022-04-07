@@ -11,14 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+<%--include standard action tag(표준액션태그) --%>	
+<%-- page속성에 포함될 페이지 경로 작성 --%>
+<jsp:include page="module/header02.jsp"></jsp:include>
+	
+	<!-- div>span>i.fa-brands.fa-amazon^a*3^div(h1>lorem1^p>lorem) -->
+	<div>
+		<h1>Lorem.</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ratione aperiam rerum sapiente! Vitae voluptatem perspiciatis aperiam deserunt quo eaque eum culpa consequuntur ab magni. Ullam recusandae eum reiciendis eos.</p>
+	</div>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
 </body>
 </html>

@@ -11,14 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+<jsp:include page="ex14page.jsp">
+	<jsp:param value="1" name="start"/>
+	<jsp:param value="10" name="end"/>
+</jsp:include>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<jsp:include page="ex14page.jsp">
+	<jsp:param value="11" name="start"/>
+	<jsp:param value="20" name="end"/>
+</jsp:include>
+
+<jsp:include page="ex14page.jsp">
+	<jsp:param value="21" name="start"/>
+	<jsp:param value="30" name="end"/>
+</jsp:include>
+
 </body>
 </html>

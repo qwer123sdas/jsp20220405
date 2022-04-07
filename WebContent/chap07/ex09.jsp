@@ -11,14 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+<h1>ex09.jsp</h1>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<jsp:include page="ex10.jsp"></jsp:include>
 </body>
 </html>

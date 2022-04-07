@@ -11,14 +11,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-	<h1>ex05.jsp</h1>
-	<p><%=request.getParameter("movie") %></p>
-</div>
+<table width="100%" border="1" cellpadding="0" cellspacing="0" >
+	<tr>
+		<td>제품번호</td> <td>XXXX</td>
+	</tr>
+	<tr>
+		<td>가격</td> <td>10,000원</td>
+	</tr>
+</table>
 
- <div>
- 	<h1>ex06.jps</h1>
- 	<p><%=request.getParameter("movie") %></p>
- </div>
+<jsp:include page="infoSub.jsp">
+	<jsp:param value="A" name="type"/>
+</jsp:include>
 </body>
 </html>
