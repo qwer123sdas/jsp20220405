@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="view.jsp">
+	<form action="<%=request.getContextPath() %>/chap07/book/p070303/view.jsp">
 
 		보고 싶은 페이지 선택
 		<select name="code" id="">
