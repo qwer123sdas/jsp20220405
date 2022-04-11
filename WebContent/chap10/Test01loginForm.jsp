@@ -48,5 +48,9 @@
 	<%
 	}
 	%>
+	
+	<form action="">
+		<input type="button" value="회원가입"/>
+	</form>
 </body>
 </html>
