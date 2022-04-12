@@ -25,12 +25,7 @@
 	String id = (String)session.getAttribute("id");
 	if(id == null){
 	%>
-		<form action="Test02loginProcess.jsp" method="post">
-			아이디 : <input type="text" name="id"/> <br />
-			비밀번호 : <input type="password" name="pw"/> <br />
-			
-			<input type="submit" value="로그인"/>
-		</form>
+		<jsp:include page="Test01loginInclude.jsp"></jsp:include>
 	<%
 	}else if(id.equals("123")){
 		session.getAttribute("message");
@@ -39,18 +34,11 @@
 	<%
 	}else{
 	%>
-		<form action="Test02loginProcess.jsp" method="post">
-			아이디 : <input type="text" name="id"/> <br />
-			비밀번호 : <input type="password" name="pw"/> <br />
-			
-			<input type="submit" value="로그인"/>
-		</form>
+		<jsp:include page="Test01loginInclude.jsp"></jsp:include>
 	<%
 	}
 	%>
 	
-	<form action="">
-		<input type="button" value="회원가입"/>
-	</form>
+
 </body>
 </html>
