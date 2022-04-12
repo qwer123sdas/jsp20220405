@@ -28,10 +28,12 @@
 
 		if(! map.containsKey(tempId)){
 			session.setAttribute("message", "입력하신 id는 존재하지 않습니다. 다시 입력해주세요.");
+			session.setAttribute("id", map.get(tempId));
 			response.sendRedirect("Test01loginForm.jsp");
 			break;
 		}else if(!(map.get(tempId)).equals(tempPw)){
 			session.setAttribute("message", "비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+			session.setAttribute("id", map.get(tempId));
 			response.sendRedirect("Test01loginForm.jsp");
 			break;
 		}else{

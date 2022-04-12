@@ -10,7 +10,7 @@
 	/* request.getParameter("password"); */
 
 
-	application.setAttribute("singUp", map);
+	application.setAttribute("signUp", map);
 
 	response.sendRedirect("Test01loginForm.jsp");
 %>
