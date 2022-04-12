@@ -25,7 +25,7 @@
 	String id = (String)session.getAttribute("id");
 	if(id == null){
 	%>
-		<jsp:include page="Test01loginInclude.jsp"></jsp:include>
+		<jsp:include page="Test06loginIncludeForm.jsp"></jsp:include>
 	<%
 	}else if(id.equals("123")){
 		session.getAttribute("message");
@@ -34,7 +34,7 @@
 	<%
 	}else{
 	%>
-		<jsp:include page="Test01loginInclude.jsp"></jsp:include>
+		<jsp:include page="Test06loginIncludeForm.jsp"></jsp:include>
 	<%
 	}
 	%>

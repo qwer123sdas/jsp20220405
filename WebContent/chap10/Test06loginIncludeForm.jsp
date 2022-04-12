@@ -10,7 +10,6 @@
 			<input type="submit" value="로그인"/>
 		</form>
 		
-		<a href="">회원가입</a>
-		<form action="Test04SingUp.jsp">
-			<input type="button" value="회원가입"/>
+		<form action="Test04SingUpFrom.jsp">
+			<input type="submit" value="회원가입"/>
 		</form>
