@@ -16,7 +16,7 @@
 		<h3>비밀번호</h3>
 		<input type="password" name="password"/><br />
 		<h3>비밀번호 재확인</h3>
-		<input type="password" name="password"/><br />
+		<input type="password" name="password2"/><br />
 		<h3>이름</h3>
 		<input type="text" name="name" id="" /> <br />
 		<h3>생년월일</h3>	

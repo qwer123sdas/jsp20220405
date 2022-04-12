@@ -6,10 +6,23 @@
 	String tempId = request.getParameter("id"); 
 	String tempPw = request.getParameter("pw");
 	
-	String id = "123";
-	String pw = "123";
-	Map<String, String> map = new HashMap<>();
-	map.put(id, pw);
+	String id = "";
+	String pw = "";
+
+/* 	Map<String, String> map = new HashMap<>();
+	map.put(id, pw); */
+	
+	Map<String, String> map = (HashMap<String, String>) application.getAttribute("signUp");
+
+	/* 	Set<String> keySet = map.keySet();
+	Iterator<String> it = keySet.iterator();
+	while(it.hasNext()){
+		id = it.next();
+		pw = map.get(id);
+	} */
+	
+	
+	
 	
 	while(true){
 
