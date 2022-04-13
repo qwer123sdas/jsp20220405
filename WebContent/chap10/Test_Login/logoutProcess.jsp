@@ -5,5 +5,5 @@
 <%
 	//session.removeAttribute("id");
 	session.invalidate(); // 세션 자체를 삭제
-	response.sendRedirect("Test01loginForm.jsp");
+	response.sendRedirect("loginForm.jsp");
 %>

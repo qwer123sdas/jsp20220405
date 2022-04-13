@@ -15,5 +15,5 @@
 
 	application.setAttribute("signUp", map);
 
-	response.sendRedirect("Test01loginForm.jsp");
+	response.sendRedirect("loginForm.jsp");
 %>

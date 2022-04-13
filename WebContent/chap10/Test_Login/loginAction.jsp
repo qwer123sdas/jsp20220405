@@ -29,15 +29,15 @@
 
 	if(result == 0){
 			session.setAttribute("message", "입력하신 id는 존재하지 않습니다. 다시 입력해주세요.");
-			response.sendRedirect("Test01loginForm.jsp");
+			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "0");
 	}else if(result == -1){
 			session.setAttribute("message", "비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-			response.sendRedirect("Test01loginForm.jsp");
+			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "0");
 	}else if (result == 1){
 			session.setAttribute("message", "로그인되었습니다. 환영합니다" + tempId +"님");
-			response.sendRedirect("Test01loginForm.jsp");
+			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "1");
 	}
 		
