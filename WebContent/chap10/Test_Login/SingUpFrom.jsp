@@ -13,10 +13,28 @@
 	<form action="SingUpProcess.jsp" method="post">
 		<h3>아이디</h3> 
 		<input type="email" name="id" id="" value="      @naver.com" /> <br />
+		<%
+			String idMessage = (String)session.getAttribute("idMessage");
+			if(idMessage != null){
+				out.print("<p>");
+				out.print(idMessage);
+				out.print("</p>");
+				session.removeAttribute("idMessage");
+			}
+		%>
 		<h3>비밀번호</h3>
 		<input type="password" name="password"/><br />
 		<h3>비밀번호 재확인</h3>
-		<input type="password" name="password2"/><br />
+		<input type="password" name="passwordResign"/><br />
+		<%
+			String pwMessage = (String)session.getAttribute("pwMessage");
+			if(pwMessage != null){
+				out.print("<p>");
+				out.print(pwMessage);
+				out.print("</p>");
+				session.removeAttribute("pwMessage");
+			}
+		%>
 		<h3>이름</h3>
 		<input type="text" name="name" id="" /> <br />
 		<h3>생년월일</h3>	

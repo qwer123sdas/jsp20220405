@@ -3,6 +3,7 @@
 <%@ page import = "java.util.*"%>
 <%	request.setCharacterEncoding("utf-8"); %>
 <%
+try{
 	String tempId = request.getParameter("id"); 
 	String tempPw = request.getParameter("pw");
 	
@@ -29,17 +30,21 @@
 
 	if(result == 0){
 			session.setAttribute("message", "입력하신 id는 존재하지 않습니다. 다시 입력해주세요.");
-			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "0");
+			response.sendRedirect("loginForm.jsp");
 	}else if(result == -1){
 			session.setAttribute("message", "비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "0");
+			response.sendRedirect("loginForm.jsp");
 	}else if (result == 1){
 			session.setAttribute("message", "로그인되었습니다. 환영합니다" + tempId +"님");
-			response.sendRedirect("loginForm.jsp");
 			session.setAttribute("logout", "1");
+			response.sendRedirect("loginForm.jsp");
 	}
+}catch(Exception e){
+/* 	session.setAttribute("message", "NullPointException발생");
+	response.sendRedirect("loginForm.jsp"); */
+}
 		
 	
 		
