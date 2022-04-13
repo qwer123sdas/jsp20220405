@@ -13,11 +13,6 @@
 <body>
 	<h1>로그인 화면</h1>
 	<%
-	/* nullpointException  */
-	Map<String, String> map = new HashMap<>();
-	map.put("1","1");
-	application.setAttribute("signUp", map);
-	/*-------------------------------------------  */
 	
 	String message = (String)session.getAttribute("message");
 	if(message != null){

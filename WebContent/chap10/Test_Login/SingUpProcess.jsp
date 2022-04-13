@@ -12,7 +12,12 @@
 	
 	Map<String, String> readyMap = (HashMap<String, String>) application.getAttribute("signUp");
 	//아이디 중복여부
-	if( (!readyMap.containsKey(id)) && (readyMap.get(id)).equals(pw)){
+	if(readyMap.get(id)==null){
+		session.setAttribute("idMessage", "Nullpoint Exception 발생");
+		map.put("123","123");
+		session.setAttribute("idResult", 0);
+		session.setAttribute("pwResult", 0);
+	}else if( (!readyMap.containsKey(id)) && (readyMap.get(id)).equals(pw)){
 		map.put(id, pw);
 		session.setAttribute("idResult", 1);
 		session.setAttribute("pwResult", 1);
