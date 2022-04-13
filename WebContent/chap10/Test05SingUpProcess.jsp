@@ -4,6 +4,9 @@
 <%	request.setCharacterEncoding("utf-8"); %>
 <%
 	Map<String, String> map = new HashMap<>();
+	// 임시 저장( nullPointExpeption 제거)
+	map.put("123", "123");
+	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("password");
 	map.put(id, pw);

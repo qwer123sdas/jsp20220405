@@ -23,11 +23,15 @@
 	%>
 	<%
 	String id = (String)session.getAttribute("id");
-	if(id == null){
+	if((String)session.getAttribute("logout")== null){
 	%>
 		<jsp:include page="Test06loginIncludeForm.jsp"></jsp:include>
 	<%
-	}else if(id.equals("123")){
+	}else if(session.getAttribute("logout").equals("0")){
+	%>
+		<jsp:include page="Test06loginIncludeForm.jsp"></jsp:include>
+	<%
+	}else if(session.getAttribute("logout").equals("1")){
 		session.getAttribute("message");
 	%>
 		<h2><a href = "Test03logoutProcess.jsp">로그아웃</a></h2>
