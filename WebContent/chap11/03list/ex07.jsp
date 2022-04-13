@@ -52,7 +52,8 @@ for(int i = 0; i<list1.size(); i++){
 for(Car item : list1){
 	pageContext.setAttribute("item", item);
 %>
-	<p>${myCar[item].model }</p>
+	<p>${item.model }</p>
+	<p>${item.price }</p>
 <%	
 }
 %>
