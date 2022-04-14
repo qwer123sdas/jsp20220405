@@ -13,11 +13,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>다른 타입과 비교연산 : 둘 중 하나가 숫자면, 숫자가 아닌 값을 숫자로 변환한다.</h1>
-	<h1>${3 > "5" }</h1>
-	<h2>${3 == "3" }</h2>
-	<h2>${3 < "5" }</h2>
-	<%-- <h2>${3 == "three" }</h2> --%>
+	<h1>empty 연산자 : 연산</h1>
+	<h1>연산결과 : boolean(true / false)</h1>
+	<h1>attribute 값이 없거나 비어 있거나 null이면 true</h1>
 	
+	<p>${empty SADSSFSFSFSDDAFADAD }</p>
+	
+	<%
+		pageContext.setAttribute("newAttr1", "");
+	%>
+	<p>${empty newAttr1 }</p>
+	
+	<%
+		pageContext.setAttribute("newAttr2", " ");
+	%>
+	<p>${empty newAttr2 }</p>
+	
+	<% pageContext.setAttribute("newAttr3", new ArrayList<>()); %>
+	<p>${empty newAttr3 }</p>
+	
+	<% pageContext.setAttribute("newAttr4", new HashMap<>()); %>
+	<p>${empty newAttr4 }</p>
+	
+	<% pageContext.setAttribute("newAttr5", new String[]{}); %>
+	<p>${empty newAttr5 }</p>
+	
+	<hr />
+	
+	<h1>값이 있는지 판단하고 싶으면 not empty</h1>
+	<p>${not empty newAttr5 }</p>
 </body>
 </html>
