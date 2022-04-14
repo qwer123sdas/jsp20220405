@@ -14,13 +14,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--age요청 파라미터 값이 20보다 클 때 관람 가능 출력, 아닐 때 관람 불가  -->
-	<c:if test="${param.age >= 20}" var="canWatch">
-		<h1>관람 가능</h1>
+	<c:if test="true">
+		<h1>무조건 수행</h1>
 	</c:if>
 	
-	<c:if test="${not canWatch}" >
-		<h1>관람 불가능</h1>
+	<c:if test="${param.name == 'bk'}">
+		<h1>name파라미터의 값이 ${param.name }입니다</h1>
+	</c:if>
+	
+	<c:if test="${18 < param.age }">
+		<h1>당신의 나이는 18세 이상입니다.</h1>
 	</c:if>
 </body>
 </html>
