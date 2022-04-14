@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="SingUpProcess.jsp" method="post">
+	<form action="SignUpProcess.jsp" method="post">
 		<h3>아이디</h3> 
 		<input type="email" name="id" id="" value="      @naver.com" /> <br />
 		<%

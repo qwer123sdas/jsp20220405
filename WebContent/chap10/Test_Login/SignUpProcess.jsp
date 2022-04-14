@@ -10,7 +10,7 @@
 	String pwResign = request.getParameter("passwordResign");
 	
 	Map<String, String> map = new HashMap<>();
-	map.put(id, pw);
+/* 	map.put(id, pw); */
 	map.put("123@naver.com","123");
 	application.setAttribute("signUp", map);
 	
@@ -26,14 +26,15 @@
 		session.setAttribute("idMessage", "이미 있는 ID입니다.");
 		session.setAttribute("idResult", 0);
 		session.setAttribute("pwResult", 1);
-	}else if(pw.equals(pwResign)){
+	}else if(!pw.equals(pwResign)){
 		/* 비밀번호 확인과 일치하지 않음 */
 		session.setAttribute("pwMessage", "비밀번호가 일치하지 않습니다.");
 		session.setAttribute("idResult", 1);
 		session.setAttribute("pwResult", 0);
-	}else if( (!readyMap.containsKey(id)) && (readyMap.get(id)).equals(pw)){
+	}else if(!readyMap.containsKey(id) && pw.equals(pwResign) ){
 		/* 계정 만들기 성공 */
 		map.put(id, pw);
+		application.setAttribute("signUp", map);
 		session.setAttribute("idResult", 1);
 		session.setAttribute("pwResult", 1);
 	}
@@ -45,7 +46,7 @@
 		application.setAttribute("signUp", map);
 		response.sendRedirect("loginForm.jsp");
 	}else{
-		response.sendRedirect("SingUpFrom.jsp");
+		response.sendRedirect("SignUpFrom.jsp");
 	}
 /* }catch(Exception e){
 	session.setAttribute("idMessage", "이미 있는 ID입니다.");

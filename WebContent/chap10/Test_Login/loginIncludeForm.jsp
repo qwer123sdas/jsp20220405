@@ -10,6 +10,6 @@
 			<input type="submit" value="로그인"/>
 		</form>
 		
-		<form action="SingUpFrom.jsp">
+		<form action="SignUpFrom.jsp">
 			<input type="submit" value="회원가입"/>
 		</form>
