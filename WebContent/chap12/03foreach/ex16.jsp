@@ -17,17 +17,15 @@
 </head>
 <body>
 	<%
-	Map<String, String> map = new HashMap<>();
-	map.put("song", "butter");
-	map.put("group", "bts");
-	map.put("season", "spring");
-	map.put("framework", "struts");
-	
-	pageContext.setAttribute("map", map);
+	String[] seasons = {"spring", "summer", "fall", "winter"};
+	pageContext.setAttribute("seasons", seasons);
 	%>
-	
-	<c:forEach items = "${map }" var="maps">
-		<h1>${maps.key } : ${maps.value }</h1>
+	<p>
+	<c:forEach items = "${seasons }" var = "season" varStatus="status">
+		${season }<c:if test="${! status.last }">, </c:if>	
 	</c:forEach>
+	</p>
+	
+	
 </body>
 </html>

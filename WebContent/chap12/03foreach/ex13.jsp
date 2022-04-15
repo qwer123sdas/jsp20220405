@@ -18,16 +18,29 @@
 <body>
 	<%
 	Map<String, String> map = new HashMap<>();
-	map.put("song", "butter");
-	map.put("group", "bts");
-	map.put("season", "spring");
-	map.put("framework", "struts");
+	map.put("movie","thor");
+	map.put("computer", "intel");
+	map.put("book", "sql");
+	map.put("lunch", "pizza");
 	
 	pageContext.setAttribute("map", map);
 	%>
 	
-	<c:forEach items = "${map }" var="maps">
-		<h1>${maps.key } : ${maps.value }</h1>
-	</c:forEach>
+	<table class = "table">
+		<thead>
+			<tr>
+				<th>키</th>
+				<th>값</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach items = "${map }" var="maps">
+			<tr>
+				<td>${maps.key }</td>
+				<td>${maps.value }</td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>

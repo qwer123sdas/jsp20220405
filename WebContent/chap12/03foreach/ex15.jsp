@@ -17,17 +17,26 @@
 </head>
 <body>
 	<%
-	Map<String, String> map = new HashMap<>();
-	map.put("song", "butter");
-	map.put("group", "bts");
-	map.put("season", "spring");
-	map.put("framework", "struts");
-	
-	pageContext.setAttribute("map", map);
+	String[] names = {"captain", "ironman", "spider", "superman", "bat", "widow", "thor"};
+	pageContext.setAttribute("names", names);
 	%>
-	
-	<c:forEach items = "${map }" var="maps">
-		<h1>${maps.key } : ${maps.value }</h1>
-	</c:forEach>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>이름</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<c:forEach items="${names }" var = "name" 
+			begin ="0" end = "3" varStatus="status">
+				<tr>
+					<td>${status.count }</td>
+					<td>${name }</td>
+				</tr>			
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>

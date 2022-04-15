@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import = "java.util.*"%>
+<%@ page import = "chap11.*" %>
 <%	request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
@@ -17,17 +18,40 @@
 </head>
 <body>
 	<%
-	Map<String, String> map = new HashMap<>();
-	map.put("song", "butter");
-	map.put("group", "bts");
-	map.put("season", "spring");
-	map.put("framework", "struts");
+	List<Car> list = new ArrayList<>();
+	list.add(new Car("volvo", 3000));
+	list.add(new Car("kia", 2000));
+	list.add(new Car("tesla", 1000));
+	list.add(new Car("benz", 500));
+	list.add(new Car("hyundai", 2500));
 	
-	pageContext.setAttribute("map", map);
+	pageContext.setAttribute("cars", list);
 	%>
 	
-	<c:forEach items = "${map }" var="maps">
-		<h1>${maps.key } : ${maps.value }</h1>
+	<c:forEach items="${cars }" var = "car">
+		<li>mode : ${car.model }, price : ${car.price }</li>
 	</c:forEach>
+	
+	<hr />
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>model</th>
+				<th>price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${cars }" var="cars" varStatus="status">
+			<tr>
+				<td>${status.count }</td>
+				<td>${cars.model }</td>
+				<td>${cars.price }</td>
+			</tr>
+			</c:forEach>
+		</tbody>
+		
+	</table>
+	
 </body>
 </html>

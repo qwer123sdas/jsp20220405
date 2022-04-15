@@ -16,18 +16,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	Map<String, String> map = new HashMap<>();
-	map.put("song", "butter");
-	map.put("group", "bts");
-	map.put("season", "spring");
-	map.put("framework", "struts");
-	
-	pageContext.setAttribute("map", map);
-	%>
-	
-	<c:forEach items = "${map }" var="maps">
-		<h1>${maps.key } : ${maps.value }</h1>
+	<c:forEach begin="10" end="13" var="i" varStatus="status">
+		<p>${i }</p>
+		<p>begin, ${status.begin }</p>
+		<p>end, ${status.end }</p>
+		<p>count, ${status.count }</p>
+		<p>index, ${status.index }</p>
+		<p>first? ${status.first }</p>
+		<p>last? ${status.last }</p>
+		
+		<!--몇번 째 loop인지
+		몇번 index인지
+		등의 상태정보를 가지고 있는 attribute = varStatus
+		LoopTagStatus객체임. 따라서 이 객체 안의 메소드를  property로 사용 -->
+		
+		
 	</c:forEach>
 </body>
 </html>
