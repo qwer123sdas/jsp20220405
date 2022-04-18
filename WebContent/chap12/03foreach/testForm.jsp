@@ -35,7 +35,8 @@
  	</form>
  	
  	<hr />
- 	
+ 	<h1>${applicationScope.cars }</h1>
+ 	<h1>${not empty applicationScope.cars }</h1>
  	<c:if test="${! empty applicationScope }">
  	<table>
  		<thead>
@@ -47,7 +48,7 @@
  			</tr>
  		</thead>
  		<tbody>
-			<c:forEach items=" ${applicationScope.cars }" var ="car" varStatus="status">
+			<c:forEach items="${applicationScope.cars }" var ="car" varStatus="status">
 			<tr>
 				<td>${status.count }</td>
 				<td>${car.model }</td>
