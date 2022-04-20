@@ -29,8 +29,10 @@ public class S5Servlet03 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String logout = request.getParameter("logout");
 		if(logout != null && logout.equals("true")) {
-			request.getSession().invalidate();  // invalidate??
+			request.getSession().invalidate();  // invalidate == session 삭제
 		}
+		
+		
 		String location = request.getContextPath() + "/chap19/ex02.jsp";
 		response.sendRedirect(location);
 	}
