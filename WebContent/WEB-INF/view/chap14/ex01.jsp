@@ -17,8 +17,6 @@
 <body>
 	<h1>고객의 도시들</h1>
 	
-	
-	<%request.getAttribute("cities"); %>
 	<h1>${cities[0] }</h1>
 	<h1>${cities[1] }</h1>
 	<h1>${cities[2] }</h1>
