@@ -53,9 +53,8 @@ public class JDBCListener implements ServletContextListener {
     	// application객체 생성
     	ServletContext application = sce.getServletContext();
     	
-    	/*FileReader fr = application.getRealPath(jdbcInfoFilePath); String이므로 다시
-    	 * stream으로 꺼내야 했다??????????*/
-    	// FileReader객체로 하면 tomcat이 어디 깔릴지 모르기 때문에, 경로가 절대경로이므로 
+    	/*String str = application.getRealPath(jdbcInfoFilePath); String이므로 다시
+    	이므로 String인 str을 다시 FileReader로 읽어야 하므로 밑에 잇는 코드처럼 한줄로 작성함. */
     	InputStream propsFile = application.getResourceAsStream(jdbcInfoFilePath);
     	// inputStream
     	
