@@ -10,9 +10,20 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- Listener 1 -->
+  <listener>
+  	<listener-class>chap20.ServletContextListener03</listener-class>
+  </listener>	
+  
+  <!-- 어느 곳이서 사용할 수 있는 param, application에 저장되어있음  -->
   <context-param>
   	<param-name>initParamName1</param-name>
   	<param-value>initParamValue1</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>adminEmail</param-name>
+  	<param-value>admin1234@gamil.com</param-value>
   </context-param>
   
   <session-config>
@@ -198,5 +209,7 @@
 		<filter-name>filter05</filter-name>
 		<url-pattern>/s5/memberOnly</url-pattern>
 	</filter-mapping>
+	
+
 	
 </web-app>
