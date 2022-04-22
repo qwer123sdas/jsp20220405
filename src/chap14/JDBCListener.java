@@ -95,7 +95,7 @@ public class JDBCListener implements ServletContextListener {
    
     		if(rs.next()) {
     			if(rs.getInt(1) == 3333) {
-    				System.out.println("데이터베이스 연결 성공@!");
+    				System.out.println("데이터베이스 "+ "연결 성공@!");
     				application.setAttribute("dbpool", pool);
     			}
     		}
