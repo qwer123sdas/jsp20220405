@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,18 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import chap14.Customer;
+import chap14.javaBeans.Employee;
+
 /**
- * Servlet implementation class S14Servlet03
+ * Servlet implementation class S14Servlet08
  */
-@WebServlet("/S14Servlet03")
-public class S14Servlet03 extends HttpServlet {
+@WebServlet("/S14Servlet08")
+public class S14Servlet08 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public S14Servlet03() {
+    public S14Servlet08() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,10 +38,8 @@ public class S14Servlet03 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sql = "SELECT CustomerName, Country, City FROM Customers";
-		List<Customer> list = new ArrayList<Customer>();
-		Map<String, List<Customer>> map = new HashMap<>();
-		
+		String sql = "SELECT FirstName, LastName, BirthDate FROM Employees";
+		List<Employee> employee = new ArrayList<Employee>();
 		
 		// 1.연결
 		ServletContext application = getServletContext();
@@ -53,28 +55,21 @@ public class S14Servlet03 extends HttpServlet {
 				){
 			// 4. 결과 정제
 			while(rs.next()) {
-				String customerName = rs.getString(1);
-				String Country = rs.getString(2);
-				String City = rs.getNString(3);
+				String firstName = rs.getString("FirstName");
+				String lastName = rs.getString("LastName");
+				String birthDay = rs.getString("BirthDate");
 				
-				Customer customer = new Customer();
-				list.add( new Customer(customerName, Country, City));
-				request.setAttribute("list", list);
+				employee.add(new Employee(firstName, lastName, birthDay));
 				
-				/*System.out.println(customerName);
-				System.out.println(Country);*/
-				
-				/*				request.setAttribute("name", customerName);
-								request.setAttribute("country", Country);
-								request.setAttribute("city", City);*/
 
 			}
+			request.setAttribute("employees", employee);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		String path = "/WEB-INF/view/chap14/ex02.jsp";
+		String path = "/WEB-INF/view/chap14/ex06.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
@@ -82,7 +77,8 @@ public class S14Servlet03 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

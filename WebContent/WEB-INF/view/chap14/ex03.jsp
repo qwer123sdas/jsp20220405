@@ -15,36 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1></h1>
-	<p>${requestScope.name }이 사는 나라는 ${country }이고 도시는 ${city }입니다.</p>
-	<p></p>
+	<h1>${customer.name }은 ${customer.country }, ${customer.city }에 삽니다.</h1>
 	
-	<hr />
-	<table class="table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>name</th>
-				<th>country</th>
-				<th>city</th>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items="${list }" var = "item" varStatus="status">
-			<tr>
-				<td>${status.count }</td>
-				<td>${item.name }</td>
-				<td>${item.country }</td>
-				<td>${item.city }</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	
-	<hr />
-	
-	<c:if test="${not empty postCode }">
-		<h2>우편번호 : ${postCode }</h2>
-	</c:if>
+	<h2>우편번호 : ${customer.postCode }</h2>
 </body>
 </html>

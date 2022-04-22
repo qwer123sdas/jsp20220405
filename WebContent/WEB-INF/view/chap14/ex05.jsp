@@ -15,36 +15,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1></h1>
-	<p>${requestScope.name }이 사는 나라는 ${country }이고 도시는 ${city }입니다.</p>
-	<p></p>
-	
-	<hr />
-	<table class="table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>name</th>
-				<th>country</th>
-				<th>city</th>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items="${list }" var = "item" varStatus="status">
-			<tr>
-				<td>${status.count }</td>
-				<td>${item.name }</td>
-				<td>${item.country }</td>
-				<td>${item.city }</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	
-	<hr />
-	
-	<c:if test="${not empty postCode }">
-		<h2>우편번호 : ${postCode }</h2>
-	</c:if>
+<!-- .container>.row>.col -->
+<form action="">
+	<input type="text" name="title"/>
+	<input type="text" name="param1"/>
+	<input type="submit" value="찾기" />
+</form>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>도시</th>
+						<th>나라</th>
+						<th><i class="fa-solid fa-signs-post"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items = "${customers }" var = "customer">
+					<tr>
+						<td>${customer.name }</td>
+						<td>${customer.city }</td>
+						<td>${customer.country }</td>
+						<td>${customer.postCode }</td>	
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
 </body>
 </html>
