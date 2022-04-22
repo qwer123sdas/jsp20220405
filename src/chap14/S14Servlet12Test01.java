@@ -36,6 +36,7 @@ public class S14Servlet12Test01 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		List<Customer> list = new ArrayList<>();
 		String title = request.getParameter("title");
 		// playes holder넣어주기 : =?,,, PreparedStatement객체 필요함
