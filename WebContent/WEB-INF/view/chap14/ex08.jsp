@@ -15,24 +15,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="S14Servlet13">
-	<!-- select>option*3 -->
-		나라 : <select name="country" id="">
-			<c:forEach items="${countryList }" var="country">
-				<option value="${country }">${country }</option>
-			</c:forEach>
-		</select>
+	<form action="" method = "post"> 
+		고객명 : <input type="text" name="customerName"/> <br />
+		계약명 : <input type="text" name = "contactName"/> <br />
+		주소 : <input type="text" name = "address"/> <br />
+		도시 : 
+			<select name="city" id="">
+				<c:forEach items = "${cityList }" var = "city">
+					<option value="${city }">${city }</option>
+				</c:forEach>
+			</select>
 			
-			<br />
-			
-		도시 : <select name="city" id="">
-			<c:forEach items="${cityList }" var="city">
-				<option value="${city }">${city }</option>
-			</c:forEach>
-		</select>
-		</select>
+		우편번호 : <input type="text" name = "postalCode"/> <br />
+		나라 : 
+			<select name="country" id="">
+				<c:forEach items = "${countryList }" var = "country">
+					<option value="${country }">${country }</option>
+				</c:forEach>
+			</select>
 		
-		<input type="submit" value="전송" />
+		<input type="submit" value="등록" />
 	</form>
 </body>
 </html>

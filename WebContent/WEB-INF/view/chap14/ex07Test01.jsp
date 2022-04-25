@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="S14Servlet13">
+	<form action="S14Servlet13Test02">
 	<!-- select>option*3 -->
 		나라 : <select name="country" id="">
 			<c:forEach items="${countryList }" var="country">
@@ -34,5 +34,34 @@
 		
 		<input type="submit" value="전송" />
 	</form>
+	
+	<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>도시</th>
+						<th>나라</th>
+						<th><i class="fa-solid fa-signs-post"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items = "${customers }" var = "customer">
+					<tr>
+						<td>${customer.name }</td>
+						<td>${customer.city }</td>
+						<td>${customer.country }</td>
+						<td>${customer.postCode }</td>	
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
 </body>
 </html>
