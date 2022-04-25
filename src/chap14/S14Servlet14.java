@@ -110,7 +110,7 @@ public class S14Servlet14 extends HttpServlet {
 			pstmt.setString(3, address);
 			pstmt.setString(4, city);
 			pstmt.setString(5, postalCode);
-			pstmt.setString(6, country);
+			
 			
 			result = pstmt.executeUpdate();
 			

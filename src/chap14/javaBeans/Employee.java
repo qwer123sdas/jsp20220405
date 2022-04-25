@@ -3,11 +3,14 @@ package chap14.javaBeans;
 public class Employee {
 	private String firstName;
 	private String lastName;
-	private String birthDay;
+	private String birthDate;
+	private String photo;
+	private String notes;
+	private int id;
 	
 	public Employee() {}
-	public Employee(String firstName, String lastName, String birthDay) {
-		this.birthDay = birthDay;
+	public Employee(String firstName, String lastName, String birthDate) {
+		this.birthDate = birthDate;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -24,11 +27,29 @@ public class Employee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getBirthDay() {
-		return birthDay;
+	public String getBirthDate() {
+		return birthDate;
 	}
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getNotes() {
+		return notes;
+	}
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
