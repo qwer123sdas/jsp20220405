@@ -15,37 +15,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>새 직원등록</h1>
 	<div>
-		<c:if test="${not empty param.success }">
-			<c:if test="${param.success }">
+			<c:if test="${param.success == true }">
 				<p class="text-success">입력성공</p>
 			</c:if>
 			
-			<c:if test="${not param.success }">
+			<c:if test="${param.success == false}">
 				<p class="test-danger">입력실패</p>
 			</c:if>
-		</c:if>
 	</div>
-
-	<form action="" method = "post"> 
-		고객명 : <input type="text" name="customerName"/> <br />
-		계약명 : <input type="text" name = "contactName"/> <br />
-		주소 : <input type="text" name = "address"/> <br />
-		도시 : 
-			<select name="city" id="">
-				<c:forEach items = "${cityList }" var = "city">
-					<option value="${city }">${city }</option>
-				</c:forEach>
-			</select>
-			
-		우편번호 : <input type="text" name = "postalCode"/> <br />
-		나라 : 
-			<select name="country" id="">
-				<c:forEach items = "${countryList }" var = "country">
-					<option value="${country }">${country }</option>
-				</c:forEach>
-			</select>
-		
+	<form action="" method="post">
+		LastName : <input type="text" name="lastName"/> <br />
+		FirstName : <input type="text" name = "firstName"/> <br />
+		BirthDate : <input type="date" name = "birthDate"/> <br />
+		Picture : <input type="text" name="pic" value="pic10"/> <br />
+		Note : <textarea name="notes"></textarea> <br />
 		<input type="submit" value="등록" />
 	</form>
 </body>
