@@ -1,15 +1,15 @@
-package chap14.javaBeans;
+package myTest;
 
-public class Customer {
+public class CustomerDTO {
 	private int id;
 	private String name;
 	private String country;
 	private String city;
 	private String postCode;
 	
-	public Customer(){}
+	public CustomerDTO(){}
 	
-	public Customer(String name, String country, String city){
+	public CustomerDTO(String name, String country, String city){
 		this.name = name;
 		this.country = country;
 		this.city = city;
@@ -48,3 +48,4 @@ public class Customer {
 		this.postCode = postCode;
 	}
 }
+

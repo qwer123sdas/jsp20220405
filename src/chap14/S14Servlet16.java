@@ -59,7 +59,7 @@ public class S14Servlet16 extends HttpServlet {
 						emp.setNotes(rs.getString("Notes"));
 						emp.setId(rs.getInt("EmployeeID"));
 						
-						// request에  attribute넣고 
+						// request에  attribute넣고 @@@@@@@@@@@@@@
 						request.setAttribute("employee", emp);
 						
 					}
@@ -88,7 +88,7 @@ public class S14Servlet16 extends HttpServlet {
 		String sql = "UPDATE Employees "
 				+ "SET LastName = ?, FirstName = ?, BirthDate = ?, Photo = ?, Notes = ? "
 				+ "WHERE EmployeeID = ?";
-		
+		int result = 0;
 		
 		ServletContext application = getServletContext();
 		DataSource ds = (DataSource)application.getAttribute("dbpool");
@@ -109,16 +109,24 @@ public class S14Servlet16 extends HttpServlet {
 			pstmt.setString(4, photo);
 			pstmt.setString(5, notes);
 			//pstmt.setString(6, request.getParameter("id"));
-			pstmt.setString(6, id);
+			pstmt.setInt(6, Integer.valueOf(id));
 			
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+		
 		String path = "S14Servlet16";
+		if(result == 1) {
+			// 잘된거
+			path += "?success=true";
+		}else {
+			// 잘못된 거
+			path += "?success=false";
+		}
 		response.sendRedirect(path);
 		
 	}

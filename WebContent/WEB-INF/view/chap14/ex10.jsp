@@ -15,6 +15,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:if test="${not empty param.success  }">
+		<c:if test="${param.success  == true}">
+			<p class="test-success">수정완료</p>
+		</c:if>
+		<c:if test="${param.success == false }">
+			<p class="test-danger">수정오류</p>
+		</c:if>
+	</c:if>
+
 	<c:if test="${empty requestScope.employee }">
 		<form action="">
 			직원번호 <input type="text" name ="id" value="1"/> <br />
