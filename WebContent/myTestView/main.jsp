@@ -1,3 +1,4 @@
+<%@page import="myTest.CustomerDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -31,26 +32,27 @@ $(document).ready(function(){
 	});
 });
 
-/* 수정 창 
+/* 수정 창*/ 
+ /* 
+ javascript로 만들어진 html에서 가져오는 방법
+ 
 $(document).ready(function(){
 	$(".UPDATE_BUTTON").click(function(){
 		//  ${list.id } 등등 관련 값 가져오는 것 + 
-		let updateHtml = `<form action="" method="post">
-		<tr>
+		let updateHtml = `<tr>
 		<form action="" method="post">
-			<td><input type="text" name="customerId" value="${list.id }"/> </td>
-			<td><input type="text" name="customerName" value="${list.name }"/> </td>
-			<td><input type="text" name="country" value="${list.country }"/> </td>
-			<td><input type="text" name="city" value="${list.city }"/> </td>
+			<td><input type="text" name="customerId" value=""/> </td>
+			<td><input type="text" name="customerName" value=""/> </td>
+			<td><input type="text" name="country" value=""/> </td>
+			<td><input type="text" name="city" value=""/> </td>
 			<td><input type="submit" value="수정완료" /></td>
 			<td><form action="/chap14/S14Servlet19_Delete">
-					<input type="hidden" name="id"  value="${list.id }"/>
+					<input type="hidden" name="id"  value=""/>
 						<button>삭제</button>
 					</form> 
 			</td>
 		</form>
-		</tr>
-		</form>`;
+		</tr>`;
 		$(".table_tbody").prepend(updateHtml);
 	});
 });
@@ -58,6 +60,8 @@ $(document).ready(function(){
 
 </script>
 <body>
+<% List<CustomerDTO> list = (List<CustomerDTO>)request.getAttribute("boardlist");%>
+
 <div class="container">
 	<c:if test="${not empty param.success }"> 
 		<c:if test="${param.success }">
@@ -79,21 +83,16 @@ $(document).ready(function(){
 			<tr>
 				<th>CustomerID</th>
 				<th>CustomerName</th>
-				<th>Country</th>
 				<th>City</th>
-				<th>PostalCode</th>
 				<th>DELETE</th>
 				<th>UPDATE</th>
 			</tr>
 		</thead>
 		<tbody class="table_tbody">
-			<c:forEach items="${customerList }" var="list">
+			<c:forEach items="${boardlist }" var="list">
 			<tr>
 				<td>${list.id }</td>
-				<td>${list.name }</td>
-				<td>${list.country }</td>
-				<td>${list.city }</td>
-				<td>${list.postCode }</td>
+				<td>${list.name }</td>>
 				<td>
 					<form action="/chap14/S14Servlet19_Delete">
 					<input type="hidden" name="id"  value="${list.id }"/>

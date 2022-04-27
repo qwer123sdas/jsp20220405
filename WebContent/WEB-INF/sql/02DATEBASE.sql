@@ -10,3 +10,4 @@ SELECT * FROM Customers;
 --
 USE w3schools;
 SELECT * FROM Customers;
+

@@ -6,17 +6,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-public class CustomerDAO {
-	// 전체출력
+public class CustomerDAO  {
+	private DataSource ds;
+	
+	public CustomerDAO(DataSource ds) {
+		this.ds = ds;
+	}
+	// 전체출력----------------------------------------------------------------------
 	public List<CustomerDTO> selectAll(){
 		//db 연결
-		String sql = "SELECT CustomerID, CustomerName, City, FROM Customers ORDER BY CustomerID";
+		String sql = "SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID";
 		
-		ServletContext application = getServletContext();
-		DataSource ds = (DataSource)application.getAttribute("dbpool"); 
+//		ServletContext application = SgetServletContext();
+//		DataSource ds = (DataSource)application.getAttribute("dbpool"); 
 		List<CustomerDTO> list = new ArrayList<CustomerDTO>();
 		
 		try(Connection con = ds.getConnection();
@@ -37,18 +41,45 @@ public class CustomerDAO {
 		return list;
 	}
 	
-	//글 쓰기
+	//글 쓰기----------------------------------------------------------------------
 	public int insert(CustomerDTO dto) {
 		return 0;
 	}
-	//글 수정
+	//글 수정----------------------------------------------------------------------
 	public int update(CustomerDTO db_update) {
-		return 0;
+		int res = 0;
+		String sql = "UPDATE Custmomers SET CustomerName = ?, City = ?";
+		
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, db_update.getName());
+			pstmt.setString(2, db_update.getCity());
+			
+			res = pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
-	//글 삭제
-	public int delete(int db_no) {
-		return 0;
-	}
+	//글 삭제----------------------------------------------------------------------
+	/*public int delete(int db_delete) {
+		// String id = request.getParameter("id"); controller에서 져와야댐
+		
+		
+		String sql = "DELETE FROM Customers WHERE CustomerID = ?";
+			
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, Integer.valueOf(id));
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}*/
 	
 }
