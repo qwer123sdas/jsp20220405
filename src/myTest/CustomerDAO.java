@@ -46,14 +46,42 @@ public class CustomerDAO  {
 		return 0;
 	}
 	//글 수정----------------------------------------------------------------------
+	// 수정버튼
+	public CustomerDTO selectOne(int id) {
+		// db연결
+		String sql = "SELECT  CustomerID, CustomerName, City FROM Customers "
+				+ "WHERE CustomerID = ?";
+		CustomerDTO dto = new CustomerDTO();
+		
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, id);
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				while(rs.next()) {
+					dto.setId(rs.getInt(1));
+					dto.setName(rs.getString(2));
+					dto.setCity(rs.getString(3));
+				}
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+		
+	// db수정
 	public int update(CustomerDTO db_update) {
 		int res = 0;
-		String sql = "UPDATE Custmomers SET CustomerName = ?, City = ?";
+		String sql = "UPDATE Customers SET CustomerName = ?, City = ? "
+				+ "WHERE CustomerID = ?";
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			pstmt.setString(1, db_update.getName());
 			pstmt.setString(2, db_update.getCity());
+			pstmt.setInt(3, Integer.valueOf(db_update.getId()));
 			
 			res = pstmt.executeUpdate();
 			

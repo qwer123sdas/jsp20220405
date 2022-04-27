@@ -60,8 +60,6 @@ $(document).ready(function(){
 
 </script>
 <body>
-<% List<CustomerDTO> list = (List<CustomerDTO>)request.getAttribute("boardlist");%>
-
 <div class="container">
 	<c:if test="${not empty param.success }"> 
 		<c:if test="${param.success }">
@@ -92,15 +90,21 @@ $(document).ready(function(){
 			<c:forEach items="${boardlist }" var="list">
 			<tr>
 				<td>${list.id }</td>
-				<td>${list.name }</td>>
+				<td>${list.name }</td>
+				<td>${list.city }</td>
 				<td>
-					<form action="/chap14/S14Servlet19_Delete">
+					<form action="controller.jsp">
+					<input type="hidden" name="command" value="db_delete"/>
 					<input type="hidden" name="id"  value="${list.id }"/>
 					<button>삭제</button>
 					</form>
 				</td>
 				<td>
+					<form action="controller.jsp">
+					<input type="hidden" name="command" value="db_update"/>
+					<input type="hidden" name="id" value="${list.id }"/>
 					<button class="UPDATE_BUTTON">수정</button>
+					</form>
 				</td>
 				
 			</tr>

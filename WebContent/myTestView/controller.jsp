@@ -36,20 +36,27 @@
 		
 		
 	}else if(command.equals("db_update")){
-		//수정----------------------------------------------------------------------
-		int db_update = Integer.valueOf(request.getParameter("db_update"));
+		//수정버튼 ----------------------------------------------------------------------
+		int id = Integer.valueOf(request.getParameter("id"));
+		CustomerDTO dto = dao.selectOne(id);
+		request.setAttribute("dto", dto);
+		
+		pageContext.forward("db_update.jsp");
+		
+	}else if(command.equals("update")){
+		//db 수정----------------------------------------------------------------------
+		int id = Integer.valueOf(request.getParameter("id"));
 		CustomerDTO dto = new CustomerDTO();
 		String customerName = request.getParameter("customerName");
-		String country = request.getParameter("country");
 		String city = request.getParameter("city");
 				
 		dto.setName(customerName);
-		dto.setCountry(country);
 		dto.setCity(city);
 		
 		int res = dao.update(dto);
-		
-		
+		// 문제
+		pageContext.forward("db_update.jsp");
+	
 	}else if(command.equals("db_delete")){
 		//삭제----------------------------------------------------------------------
 		
