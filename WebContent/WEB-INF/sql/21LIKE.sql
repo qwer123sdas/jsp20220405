@@ -10,3 +10,5 @@ SELECT * FROM Employees WHERE LastName LIKE 'D%'; -- d로 시작하는
 SELECT * FROM Employees WHERE LastName LIKE '%n'; -- n으로 끝나는
 
 SELECT * FROM Employees WHERE LastName LIKE '%n%';
+
+SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID;
