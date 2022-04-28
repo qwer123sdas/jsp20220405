@@ -76,6 +76,8 @@ $(document).ready(function(){
 	</c:if>
 	
 	<h1>고객 리스트</h1>
+	<input type="hidden" name="command" value=""/>
+	<button> 추가하기 </button>
 	<table class="table">
 		<thead>
 			<tr>
