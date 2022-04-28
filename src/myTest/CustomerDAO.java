@@ -18,7 +18,7 @@ public class CustomerDAO  {
 	public List<CustomerDTO> selectAll(){
 		//db 연결
 		String sql = "SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID";
-		
+		//String sql = "SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID LIMIT ?, 10";
 //		ServletContext application = SgetServletContext();
 //		DataSource ds = (DataSource)application.getAttribute("dbpool"); 
 		List<CustomerDTO> list = new ArrayList<CustomerDTO>();
