@@ -43,6 +43,17 @@ public class CustomerDAO  {
 	
 	//글 쓰기----------------------------------------------------------------------
 	public int insert(CustomerDTO dto) {
+		String sql = "INSERT INTO (CustomerID, CustomerName, City) "
+				+ "FROM Customers";
+		
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
 		return 0;
 	}
 	//글 수정----------------------------------------------------------------------

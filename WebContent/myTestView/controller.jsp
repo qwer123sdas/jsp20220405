@@ -82,9 +82,13 @@
 		</script>
 <%
 		//pageContext.forward("main.jsp");
-	} /*else if(){
-		추가
-	}*/
+
+	}else if(command.equals("db_insert")){
+		//추가----------------------------------------------------------------------
+		CustomerDTO dto = null;
+		dao.insert(dto);
+		
+	}
 
 %>
 
