@@ -29,3 +29,28 @@ VALUES ('abc');  -- 되지만 5개 공간 차지하고 있느것
 
 INSERT INTO MyTable4 (col4)
 VALUES ('가나다라마');
+
+-- 트림(trim) disable
+SET sql_mode = 'PAD_CHAR_TO_FULL_LENGTH';
+
+SELECT * FROM MyTable4;
+
+-- VARCHAR : 가변 길이
+CREATE TABLE MyTable5 (
+	col1 CHAR(10),
+    col2 VARCHAR(10)
+);
+
+-- 테이블 지우기
+DROP TABLE MyTable5;
+
+SELECT * FROM MyTable5;
+
+INSERT INTO MyTable5(col1, col2)
+VALUES('a', 'a');
+-- a         /a
+INSERT INTO MyTable5(col2)
+VALUES('0123456789');
+
+INSERT INTO MyTable5(col2)
+VALUES('01234567891');
