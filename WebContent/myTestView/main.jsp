@@ -96,7 +96,7 @@ $(document).ready(function(){
 					<form action="controller.jsp">
 					<input type="hidden" name="command" value="db_delete"/>
 					<input type="hidden" name="id"  value="${list.id }"/>
-					<button>삭제</button>
+					<button class = "delete-button">삭제</button>
 					</form>
 				</td>
 				<td>

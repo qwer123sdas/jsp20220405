@@ -76,14 +76,17 @@
 		int id = Integer.valueOf(request.getParameter("id"));
 		dao.delete(id);
 		
-		pageContext.forward("main.jsp");
-		
-		
-		
+%>
+		<script type="text/javascript">
+			location.href = "controller.jsp?command=main";
+		</script>
+<%
+		//pageContext.forward("main.jsp");
 	} /*else if(){
 		추가
 	}*/
 
 %>
+
 </body>
 </html>
