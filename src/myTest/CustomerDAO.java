@@ -94,20 +94,20 @@ public class CustomerDAO  {
 	}
 	
 	//글 삭제----------------------------------------------------------------------
-	/*public int delete(int db_delete) {
-		// xxxString id = request.getParameter("id"); controller에서 져와야댐 //
-		
+	public int delete(int id) {
 		String sql = "DELETE FROM Customers WHERE CustomerID = ?";
-			
+		int res = 0;
+		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			
-			pstmt.setInt(1, Integer.valueOf(id));
-			pstmt.executeUpdate();
+			pstmt.setInt(1, id);
+			res = pstmt.executeUpdate();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+		return res;
+	}
 	
 }

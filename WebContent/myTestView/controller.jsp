@@ -74,8 +74,7 @@
 	}else if(command.equals("db_delete")){
 		//삭제----------------------------------------------------------------------
 		int id = Integer.valueOf(request.getParameter("id"));
-		CustomerDTO dto = new CustomerDTO();
-		/*dto.delete(id); */
+		dao.delete(id);
 		
 		pageContext.forward("main.jsp");
 		
