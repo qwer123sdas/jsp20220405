@@ -45,20 +45,32 @@
 		
 	}else if(command.equals("update")){
 		//db 수정----------------------------------------------------------------------
-		int id = Integer.valueOf(request.getParameter("id"));
-		CustomerDTO dto = new CustomerDTO();
-		String customerName = request.getParameter("customerName");
+		String id = request.getParameter("id");
+		String customerName = request.getParameter("name");
 		String city = request.getParameter("city");
-				
+		/*
+		System.out.println(id); System.out.println(customerName); System.out.println(city);
+		*/
+		
+		CustomerDTO dto = new CustomerDTO();
+		
+		dto.setId(Integer.valueOf(id));
 		dto.setName(customerName);
 		dto.setCity(city);
 		
 		int res = dao.update(dto);
-		// 문제
-		pageContext.forward("db_update.jsp");
+		System.out.println(res);
+		dao.update(dto);
+		// 문제 : forward해서 그대로 query string이 가기 때문에 command=main이 없어서 오류가 생김
+		pageContext.forward("main.jsp");
 	
 	}else if(command.equals("db_delete")){
 		//삭제----------------------------------------------------------------------
+		int id = Integer.valueOf(request.getParameter("id"));
+		CustomerDTO dto = new CustomerDTO();
+		/*dto.delete(id); */
+		
+		pageContext.forward("main.jsp");
 		
 		
 		

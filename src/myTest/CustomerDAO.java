@@ -76,6 +76,7 @@ public class CustomerDAO  {
 		int res = 0;
 		String sql = "UPDATE Customers SET CustomerName = ?, City = ? "
 				+ "WHERE CustomerID = ?";
+		/*System.out.println(db_update.getName()); System.out.println(db_update.getCity()); System.out.println(db_update.getId());*/
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -94,8 +95,7 @@ public class CustomerDAO  {
 	
 	//글 삭제----------------------------------------------------------------------
 	/*public int delete(int db_delete) {
-		// String id = request.getParameter("id"); controller에서 져와야댐
-		
+		// xxxString id = request.getParameter("id"); controller에서 져와야댐 //
 		
 		String sql = "DELETE FROM Customers WHERE CustomerID = ?";
 			
