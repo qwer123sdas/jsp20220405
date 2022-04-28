@@ -41,20 +41,24 @@ public class CustomerDAO  {
 		return list;
 	}
 	
-	//글 쓰기----------------------------------------------------------------------
-	public int insert(CustomerDTO dto) {
-		String sql = "INSERT INTO (CustomerID, CustomerName, City) "
-				+ "FROM Customers";
+	//새로운 글 쓰기----------------------------------------------------------------------
+	public int insert(CustomerDTO dto, String name, String city) {
+		String sql = "INSERT INTO Customers(CustomerName, City) "
+				+ "VALUES(?, ?)";
+		int res = 0 ;
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, name);
+			pstmt.setString(2, city);
 			
+			res = pstmt.executeUpdate();
 	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 
-		return 0;
+		return res;
 	}
 	//글 수정----------------------------------------------------------------------
 	// 수정버튼

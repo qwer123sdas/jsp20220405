@@ -15,11 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action="controller.jsp">
-	<input type="hidden" name="command" value="main"/>
-	<button>정보 불러오기</button>
-</form>
-<!-- <a href="/myTest/Paging">정보</a> -->
+	<a href="<%=request.getContextPath() %>/board/list">들어가기</a>
 </body>
 </html>

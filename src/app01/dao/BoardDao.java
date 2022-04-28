@@ -1,0 +1,103 @@
+package app01.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
+
+import app01.dto.BoardDto;
+
+public class BoardDao {
+	
+	// list화면 보여주기 (쓰기)---------------------------------------------------------------------------------------------------
+	// Dto : data transfer object
+	public boolean insert(Connection con, BoardDto dto) {
+		/*	<!-- Filter 4  -->
+			<filter>
+				<filter-name>filter04</filter-name>
+				<filter-class>chap19.Filter04</filter-class>
+			</filter>
+			
+			<filter-mapping>
+				<filter-name>filter04</filter-name>
+				<url-pattern>/s5/*</url-pattern>
+				<url-pattern>/board/*</url-pattern>
+			</filter-mapping>*/
+		// 를 사용해서 한글을 db에 작성할 수 있도록 필터링 처리 함.
+		// 게다가 sevlet @어노테이션 바꿔놓음 /board/로
+		
+		String sql = "INSERT INTO Board(title, body, inserted) "
+				+ "VALUES (?, ?, ?)";
+		int result = 0;
+		// connection
+		// statement
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getBody());
+			// LocalDate 날짜
+			// LocalDateTime 날짜 + 시간
+			LocalDateTime now = LocalDateTime.now();
+			pstmt.setTimestamp(3, Timestamp.valueOf(now));
+			
+			// execute query
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 결과 return
+		return result == 1;
+	}
+
+	// 읽기---------------------------------------------------------------------------------------------------
+	public List<BoardDto> list(Connection con) {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		String sql = "SELECT id, title, inserted FROM Board ORDER BY id DESC";
+		
+		try(Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);){
+			while(rs.next()) {
+				BoardDto board = new BoardDto();
+				board.setId(rs.getInt(1));
+				board.setTitle(rs.getString(2));
+				board.setInserted(rs.getTimestamp(3).toLocalDateTime());
+				
+				list.add(board);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// 선택하여 게시글 보여주기---------------------------------------------------------------------------------------------------
+	public BoardDto get(Connection con, int id) {
+		String sql = "SELECT id, title, body, inserted "
+				+ "FROM Board WHERE id = ?";
+		try(PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, id);
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					BoardDto board = new BoardDto();
+					board.setId(rs.getInt(1));
+					board.setTitle(rs.getString(2));
+					board.setBody(rs.getString(3));
+					board.setInserted(rs.getTimestamp(4).toLocalDateTime());
+					
+					return board;
+				}
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

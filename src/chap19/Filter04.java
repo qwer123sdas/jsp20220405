@@ -35,7 +35,7 @@ public class Filter04 implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		System.out.println("4번째 필터 && 거쳐감");
+		System.out.println("4번째 필터 && 한글로 바꿔주는 필터 거쳐감");
 		request.setCharacterEncoding("utf-8");
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

@@ -15,11 +15,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action="controller.jsp">
-	<input type="hidden" name="command" value="main"/>
-	<button>정보 불러오기</button>
-</form>
-<!-- <a href="/myTest/Paging">정보</a> -->
+	<!-- .container>.row>.col>h1{글 작성} -->
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>글 작성</h1>
+				<form action="${appRoot }/board/insert" method="post">
+					<div>
+						<label class = "form-label" for="input1">제목</label>   <!--for->input1  -->
+						<input class = "form-control" type="text" name="title" required id="input1" />
+					</div>
+					<div>
+						<label  class = "form-label" for="textarea1">본문</label>
+						<!-- textarea#textarea1 -->
+						<textarea class = "form-control" name="body" id="textarea1" cols="30" rows="10"></textarea>
+					</div>					
+					
+					<!-- button.btn.btn-primary{작성} -->
+					<button class="btn btn-primary">작성</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

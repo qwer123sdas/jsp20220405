@@ -76,8 +76,17 @@ $(document).ready(function(){
 	</c:if>
 	
 	<h1>고객 리스트</h1>
-	<input type="hidden" name="command" value=""/>
-	<button> 추가하기 </button>
+	<!-- 검색 -->
+		<form action="">
+			이름검색 : <input type="text" name="keyword" value="${param.keyword }"/> 
+			<button><i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
+	
+	<!-- 추가  -->
+	<form action="db_insert.jsp">
+		<button> 추가하기 </button>
+	</form>
+	
 	<table class="table">
 		<thead>
 			<tr>

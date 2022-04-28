@@ -15,11 +15,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action="controller.jsp">
-	<input type="hidden" name="command" value="main"/>
-	<button>정보 불러오기</button>
-</form>
-<!-- <a href="/myTest/Paging">정보</a> -->
+	<!-- .container>.row>.col>h1{글 목록} -->
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>글 목록</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th><i class = "fa-solid fa-hashtag"></i></th>
+							<th>제목</th>
+							<th>작성일시<i class = "fa-solid fa-calendar"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${boardList }" var = "board">
+						<tr>
+							<td>${board.id }</td>
+							<td>
+								 <!-- BoardGetServlet에 보내는 코드 -->
+								<c:url value = "/board/get" var = "getUrl"> 
+									<c:param name="id" value="${board.id }"></c:param>
+								</c:url>
+								<a href="${getUrl }">
+									${board.title }	
+								</a>
+							
+							</td>
+							<td>${board.prettyInserted }</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>

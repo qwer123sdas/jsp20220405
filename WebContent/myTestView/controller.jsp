@@ -85,8 +85,20 @@
 
 	}else if(command.equals("db_insert")){
 		//추가----------------------------------------------------------------------
-		CustomerDTO dto = null;
-		dao.insert(dto);
+		CustomerDTO dto = new CustomerDTO();
+		
+		
+		String name = request.getParameter("name");
+		String city = request.getParameter("city");
+		
+		dao.insert(dto, name, city);
+		
+		%>
+		<script type="text/javascript">
+			alert("글 저장 성공");
+			location.href = "controller.jsp?command=main";
+		</script>
+	<%
 		
 	}
 

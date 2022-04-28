@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@page import="myTest.CustomerDTO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +17,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action="controller.jsp">
-	<input type="hidden" name="command" value="main"/>
-	<button>정보 불러오기</button>
-</form>
-<!-- <a href="/myTest/Paging">정보</a> -->
+<%
+	CustomerDTO dto = (CustomerDTO)request.getAttribute("dto");
+%>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>CustomerID</th>
+				<th>CustomerName</th>
+				<th>City</th>
+				<th>돌아가기</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="controller.jsp">
+			<input type="hidden" name="command" value="db_insert" />
+				<tr>
+					<td>
+						 맨뒤의 자리임
+					</td>
+					<td>
+						 <input type="text" name="name" value=""/> <br />
+					</td>
+					<td>
+						 <input type="text" name="city" /> <br />
+					</td>
+					<td>
+						<!-- <input type="button" value="저장하기" onclick="location.href='controller.jsp?command=db_insert'"/> -->
+						<!-- 위에는 query string을 보내지 않음 -->
+						<input type="submit" value="저장하기" />
+					</td>
+				</tr>
+			</form>
+		</tbody>
+	</table>
 </body>
 </html>
