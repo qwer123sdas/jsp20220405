@@ -21,5 +21,6 @@
 	<button>정보 불러오기</button>
 </form>
 <!-- <a href="/myTest/Paging">정보</a> -->
+<a href="<%=request.getContextPath() %>/myTestView/Paging">들어가기</a>
 </body>
 </html>

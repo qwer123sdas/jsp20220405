@@ -21,7 +21,7 @@ import chap14.javaBeans.Customer;
 /**
  * Servlet implementation class paging
  */
-@WebServlet("/Paging")
+@WebServlet("/myTestView/Paging")
 public class Paging extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -91,8 +91,8 @@ public class Paging extends HttpServlet {
 		request.setAttribute("currentPage", pageNum);
 		request.setAttribute("lastPage", lastPage);
 		
-		String path = "/myTestView/controller.jsp?command=main";
-		
+		String path = "/myTestView/controller.jsp?command=main&page=1";
+		request.getRequestDispatcher(path).forward(request, response);
 		//response.sendRedirect(path);
 
 
