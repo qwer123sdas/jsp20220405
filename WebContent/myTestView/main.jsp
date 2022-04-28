@@ -129,20 +129,20 @@ $(document).ready(function(){
 			<c:if test="${prevPage >= 1 }">
 				<!-- li.page-item>a.page-link>span>{&laquo;} -->
 				<li class="page-item">
-					<a class="page-link" href="S14Servlet19?page=${prevPage }">
+					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${prevPage }">
 						<span>&laquo;</span>
 					</a>
 				</li>
 			</c:if>
 			<c:forEach begin = "${startPage }" end = "${endPage }"  var = "pageNum"> 
 				<li class="page-item ${pageNum == currentPage ? 'active' : '' }">
-					<a href="S14Servlet19?page=${pageNum }" 
+					<a href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${pageNum }" 
 					class="page-link" >${pageNum }</a>
 				</li>
 			</c:forEach>
 			<c:if test="${lastPage != endPage }"> 
 				<li class="page-item">
-					<a class="page-link" href="S14Servlet19?page=${nextPage }">
+					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${nextPage }">
 						<span>&raquo;</span>
 					</a>
 				</li>

@@ -18,6 +18,7 @@
 
 <form action="controller.jsp">
 	<input type="hidden" name="command" value="main"/>
+	<input type="hidden" name="page" value="1"/>
 	<button>정보 불러오기</button>
 </form>
 <!-- <a href="/myTest/Paging">정보</a> -->

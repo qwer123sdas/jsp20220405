@@ -29,11 +29,38 @@
 	// 요청이 main일 때----------------------------------------------------------------------
 	if(command.equals("main")){
 		//읽기 ----------------------------------------------------------------------
-		List<CustomerDTO> list = dao.selectAll();
+		// 페이징 넘버-----
+		String pageNumStr = request.getParameter("page");
+		// ------------
+		List<CustomerDTO> list = dao.selectAll(pageNumStr);
 		request.setAttribute("boardlist", list);
 		
-		pageContext.forward("main.jsp");
+		// 페이징 처리-----------------------------------------------------
+		int total = dao.getTotal();
 		
+		if(pageNumStr == null || pageNumStr.trim().equals("")) {
+				pageNumStr = "1";
+		}
+		int pageNum = Integer.valueOf(pageNumStr);
+		int startPage = (pageNum) / 10 * 10 + 1;
+		int endPage = startPage + 9;
+		
+		int startRowNum = (pageNum - 1) * 10;
+		
+		int lastPage = (total - 1) / 10 + 1;
+		
+		endPage = Math.min(lastPage, endPage);
+		request.setAttribute("customerList", list);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		
+		request.setAttribute("prevPage", startPage - 10);
+		request.setAttribute("nextPage", startPage + 10);
+		request.setAttribute("currentPage", pageNum);
+		request.setAttribute("lastPage", lastPage);
+		
+		//---------------------------------------------------------------
+		pageContext.forward("main.jsp");
 		
 	}else if(command.equals("db_update")){
 		//수정버튼 ----------------------------------------------------------------------
@@ -101,6 +128,8 @@
 	<%
 		
 	}
+	
+	
 
 %>
 
