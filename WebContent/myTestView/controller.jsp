@@ -59,10 +59,17 @@
 		dto.setCity(city);
 		
 		int res = dao.update(dto);
-		System.out.println(res);
 		dao.update(dto);
 		// 문제 : forward해서 그대로 query string이 가기 때문에 command=main이 없어서 오류가 생김
-		pageContext.forward("main.jsp");
+		if(res > 0){
+%>
+	<script type="text/javascript">
+		alert("글 수정 성공");
+		location.href = "controller.jsp?command=main";
+	</script>
+<%
+		}
+		// pageContext.forward("/controller.jsp/command=selectone&id=" + id);
 	
 	}else if(command.equals("db_delete")){
 		//삭제----------------------------------------------------------------------
