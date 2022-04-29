@@ -31,7 +31,7 @@
 		//읽기 ----------------------------------------------------------------------
 		// 페이징 넘버-----
 		String pageNumStr = request.getParameter("page");
-		// ------------
+		// ----------------
 		List<CustomerDTO> list = dao.selectAll(pageNumStr);
 		request.setAttribute("boardlist", list);
 		
