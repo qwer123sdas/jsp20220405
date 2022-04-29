@@ -100,4 +100,41 @@ public class BoardDao {
 		}
 		return null;
 	}
+	// 게시글 수정하기----------------------------------------------------------------------------------------------------------
+	public boolean modify(Connection con, BoardDto board) {
+		String sql = "UPDATE Board "
+				+ "SET title=?, "
+				+ "    body=? "
+				+ "WHERE id=? ";
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getBody());
+			pstmt.setInt(3, board.getId());
+			
+			int count = pstmt.executeUpdate();
+			
+			return count == 1;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
+	// 게시글 삭제하기----------------------------------------------------------------------------------------------------------
+	public boolean delet(Connection con, int id) {
+		String sql = "DELETE FROM Board "
+				+ "WHERE id = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, id);
+			
+			int count = pstmt.executeUpdate();
+			return count == 1;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="my" tagdir = "/WEB-INF/tags/app01" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +15,29 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- navBar -->
+	<my:navBar current="list"/>
 	<!-- .container>.row>.col>h1{글 목록} -->
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<h1>글 목록</h1>
+				
+				<c:if test="${not empty param.success }">
+					<c:if test="${param.success }">
+						<div class="alert alert-primary">
+							게시물이 삭제 되었습니다.
+						</div>
+					</c:if>
+					
+					<c:if test="${not param.success }">
+						<div class="alert alert-danger">
+							게시물이 삭제 중 문제가 발생 하였습니다.
+						</div>
+					</c:if>
+				
+				</c:if>
+				
 				<table class="table">
 					<thead>
 						<tr>
@@ -47,6 +65,8 @@
 					</c:forEach>
 					</tbody>
 				</table>
+				
+				c:cho
 				
 			</div>
 		</div>
