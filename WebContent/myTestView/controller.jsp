@@ -42,7 +42,7 @@
 				pageNumStr = "1";
 		}
 		int pageNum = Integer.valueOf(pageNumStr);
-		int startPage = (pageNum) / 10 * 10 + 1;
+		int startPage = (pageNum) / 10 * 10 + 1; ///
 		int endPage = startPage + 9;
 		
 		int startRowNum = (pageNum - 1) * 10;
