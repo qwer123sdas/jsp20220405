@@ -32,7 +32,20 @@
 		// 페이징 넘버-----
 		String pageNumStr = request.getParameter("page");
 		// ----------------
-		List<CustomerDTO> list = dao.selectAll(pageNumStr);
+		// 검색 request----
+		String find_title = request.getParameter("find_title");
+		String find_keyword = request.getParameter("find_keyword");
+		if(find_keyword == null || find_keyword.trim().equals("")) {
+			find_keyword = "";
+		}
+		if(find_title == null || find_title == ""){
+			find_title = "City";
+		}
+		find_keyword = "%" + find_keyword.trim() + "%";
+
+		// ----------------
+		
+		List<CustomerDTO> list = dao.selectAll(pageNumStr, find_title, find_keyword);
 		request.setAttribute("boardlist", list);
 		
 		// 페이징 처리-----------------------------------------------------

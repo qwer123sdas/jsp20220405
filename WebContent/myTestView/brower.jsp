@@ -19,6 +19,8 @@
 <form action="controller.jsp">
 	<input type="hidden" name="command" value="main"/>
 	<input type="hidden" name="page" value="1"/>
+	<input type="hidden" name="find_title" value="City"/>
+	<input type="hidden" name="find_keyword" value=""/>
 	<button>정보 불러오기</button>
 </form>
 <!-- <a href="/myTest/Paging">정보</a> -->

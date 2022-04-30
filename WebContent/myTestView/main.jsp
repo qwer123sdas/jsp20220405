@@ -77,8 +77,14 @@ $(document).ready(function(){
 	
 	<h1>고객 리스트</h1>
 	<!-- 검색 -->
-		<form action="">
-			이름검색 : <input type="text" name="keyword" value="${param.keyword }"/> 
+		<form action="controller.jsp">
+			<input type="hidden" name="command"  value="main"/>
+			<input type="hidden" name="page"  value="1"/>
+			검색 : 	<select name="find_title" id="">
+							<option ${(param.find_title == "CustomerName")? "selected" : "" } value="CustomerName">CustomerName</option>
+							<option ${(param.find_title == "City")? "selected" : "" } value="City">city</option>
+						</select>
+			<input type="text" name="find_keyword" value="${param.keyword }"/> 
 			<button><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
 	
@@ -129,20 +135,20 @@ $(document).ready(function(){
 			<c:if test="${prevPage >= 1 }">
 				<!-- li.page-item>a.page-link>span>{&laquo;} -->
 				<li class="page-item">
-					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${prevPage }">
+					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${prevPage }&find_title=${param.find_title }&find_keyword=${param.find_keyword}">
 						<span>&laquo;</span>
 					</a>
 				</li>
 			</c:if>
 			<c:forEach begin = "${startPage }" end = "${endPage }"  var = "pageNum"> 
 				<li class="page-item ${pageNum == currentPage ? 'active' : '' }">
-					<a href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${pageNum }" 
+					<a href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${pageNum }&find_title=${param.find_title }&find_keyword=${param.find_keyword}" 
 					class="page-link" >${pageNum }</a>
 				</li>
 			</c:forEach>
 			<c:if test="${lastPage != endPage }"> 
 				<li class="page-item">
-					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${nextPage }">
+					<a class="page-link" href="<%= request.getContextPath() %>/myTestView/controller.jsp?command=main&page=${nextPage }&find_title=${param.find_title }&find_keyword=${param.find_keyword}">
 						<span>&raquo;</span>
 					</a>
 				</li>

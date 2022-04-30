@@ -17,10 +17,14 @@ public class CustomerDAO  {
 		this.ds = ds;
 	}
 	// 전체출력----------------------------------------------------------------------
-	public List<CustomerDTO> selectAll(String pageNumStr){
+	public List<CustomerDTO> selectAll(String pageNumStr, String find_title, String find_keyword){
 		//db 연결
 		//String sql = "SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID";
-		String sql = "SELECT CustomerID, CustomerName, City FROM Customers ORDER BY CustomerID LIMIT ?, 10";
+		String sql = "SELECT CustomerID, CustomerName, City "
+				+ "FROM Customers "
+				+ "WHERE "+ find_title + " Like ?"
+				+ "ORDER BY CustomerID "
+				+ "LIMIT ?, 10";
 //		ServletContext application = SgetServletContext();
 //		DataSource ds = (DataSource)application.getAttribute("dbpool"); 
 		List<CustomerDTO> list = new ArrayList<CustomerDTO>();
@@ -29,14 +33,22 @@ public class CustomerDAO  {
 		if(pageNumStr == null || pageNumStr.trim().equals("")) {
 			pageNumStr = "1";
 		}
+		
+		
+		
+		
 		int pageNum = Integer.valueOf(pageNumStr);
 		int startRowNum = (pageNum - 1) * 10;
 		/* ------------------------------------------------------------ */
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
-				
-			pstmt.setInt(1, startRowNum);
+			// 검색 ?param
+			
+			
+			pstmt.setString(1, find_keyword);
+			// 페이징 ?parma
+			pstmt.setInt(2, startRowNum);
 			
 			try(ResultSet rs = pstmt.executeQuery()){
 				while(rs.next()) {
