@@ -84,7 +84,7 @@ $(document).ready(function(){
 							<option ${(param.find_title == "CustomerName")? "selected" : "" } value="CustomerName">CustomerName</option>
 							<option ${(param.find_title == "City")? "selected" : "" } value="City">city</option>
 						</select>
-			<input type="text" name="find_keyword" value="${param.keyword }"/> 
+			<input type="text" name="find_keyword" value="${param.find_keyword }"/> 
 			<button><i class="fa-solid fa-magnifying-glass"></i></button>
 		</form>
 	
