@@ -75,4 +75,18 @@ public class ReplyDao {
 		return false;
 	}
 	
+	public boolean delete(Connection con, int boardId) {
+		String sql ="DELETE FROM Reply WHERE Id = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setInt(1, boardId);
+			
+			int cont = pstmt.executeUpdate();
+			return cont == 1;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

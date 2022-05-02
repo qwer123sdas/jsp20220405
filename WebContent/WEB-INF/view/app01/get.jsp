@@ -46,7 +46,19 @@
 			
 			$(displayDivId).hide();
 			$(editFormId).show();
-		})
+		});
+		
+		// reply-delete-button 클릭시
+		$(".reply-delete-button").click(function(){
+			// replyId값을 여기서 보내줌.
+			const replyId = $(this).attr("data-reply-id");
+			const message = " 댓글을 삭제하시 겠습니까?";
+			
+			if(confirm(message)){
+				$("#replyDeleteInput1").val(replyId);
+				$("#replyDeleteForm1").submit();
+			}
+		});
 	});
 </script>
 
@@ -130,6 +142,12 @@
 							 	${reply.content }
 							 	                                                <!--표준 attribute아님  -->
 							 	<button class="reply-edit-toggle-button" id = "replyEditToggleButton${reply.id }" data-reply-id="${reply.id }"><i class ="fa-solid fa-pen-to-square"></i></button>
+							 	
+							 	<!--삭제버튼  -->
+							 	<!-- button.reply-delete-button[data-reply-id] -->
+							 	<button class="reply-delete-button" data-reply-id="${reply.id }">
+							 		<i class="fa-solid fa-trash-can"></i>
+							 	</button>
 							 </div>
 							 
 							 <div id="replyEditFormContainer${reply.id }" style="display : none;">
@@ -148,6 +166,12 @@
 			</div>
 		</div>
 	</div>
-
+	<%-- reply 삭제 form --%>
+	<div class="d-none">
+		<form id="replyDeleteForm1" action="${appRoot }/reply/delete" method="post">
+			<input type="hidden" name="boardId" value="${board.id }"/>
+			<input id="replyDeleteInput1" type="text" name="id" />
+		</form>
+	</div>
 </body>
 </html>
