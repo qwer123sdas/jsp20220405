@@ -32,7 +32,21 @@
 				form1.submit();
 			}
 		});
-	
+		// reply-edit-toggle클릭시 댓글 보여주는 div숨기고,
+		// 수정 form 보여주기
+		$(".reply-edit-toggle-button").click(function (){
+			//console.log("버튼클릭");
+			const replyId = $(this).attr("data-reply-id");
+			const displayDivId = "#replyDisplayContainer" + replyId;
+			const editFormId = "#replyEditFormContainer" + replyId;
+			
+			//console.log(replyId);
+			//console.log(displayDivId);
+			//console.log(editFormId);
+			
+			$(displayDivId).hide();
+			$(editFormId).show();
+		})
 	});
 </script>
 
@@ -88,7 +102,7 @@
 		
 		
 	</div>
-	<%-- 댓글 --%>
+	<%-- 댓글추가 form --%>
 	<!-- .container.mt-3>.row>.col>form -->
 	<div class="container mt-3">
 		<div class="row">
@@ -104,6 +118,36 @@
 		</div>
 	</div>
 	
+	<%-- 댓글 목록 --%>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col">
+					<ul class="list-group" >
+						<c:forEach items="${replyList }" var="reply">
+							<li class="list-group-item">
+							<div id="replyDisplayContainer${reply.id }">
+								<div class="fw-bold"><i class="fa-solid fa-comment"></i> ${reply.prettyInserted }</div>
+							 	${reply.content }
+							 	                                                <!--표준 attribute아님  -->
+							 	<button class="reply-edit-toggle-button" id = "replyEditToggleButton${reply.id }" data-reply-id="${reply.id }"><i class ="fa-solid fa-pen-to-square"></i></button>
+							 </div>
+							 
+							 <div id="replyEditFormContainer${reply.id }" style="display : none;">
+							 	<form action="${appRoot }/reply/modify" method="post">
+							 	 	<div class="input-group" >
+										<input type="hidden" name="replyId" value="${reply.id }"/>
+										<input type="hidden" name="boardId" value="${board.id }"/>
+										<input class = "form-control"  value = "${reply.content }" type="text" name = "replyContent" required />
+										<button class="btn btn-outline-secondary"><i class = "fa-solid fa-comment-dots"></i></button>
+									</div>
+							 	</form>
+							 </div>
+							</li>
+						</c:forEach>
+					</ul>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

@@ -57,4 +57,22 @@ public class ReplyDao {
 		}
 		return list;
 	}
+	
+	public boolean update(Connection con, ReplyDto dto) {
+		String sql = "UPDATE Reply SET content = ? WHERE id = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, dto.getContent());
+			pstmt.setInt(2, dto.getId());
+			
+			 int cont = pstmt.executeUpdate();
+			 return cont == 1;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 }
