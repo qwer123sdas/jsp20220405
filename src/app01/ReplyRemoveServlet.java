@@ -52,7 +52,6 @@ public class ReplyRemoveServlet extends HttpServlet {
 		// request 파라미터 수집 / 가공
 		String boardIdStr = request.getParameter("boardId");
 
-		
 		String replyIdStr = request.getParameter("id"); 
 		int replyId = Integer.valueOf(replyIdStr); 
 		

@@ -66,8 +66,6 @@
 					</tbody>
 				</table>
 				
-				c:cho
-				
 			</div>
 		</div>
 	</div>
