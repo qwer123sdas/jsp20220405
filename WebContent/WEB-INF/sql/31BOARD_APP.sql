@@ -37,5 +37,5 @@ CREATE TABLE Reply(
     FOREIGN KEY(board_id) REFERENCES Board(id)   -- FOREIGN KEY 제약사항 추가
 );
 
-
+DESC Reply;
 SELECT * FROM Reply;
