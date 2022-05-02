@@ -140,6 +140,7 @@
 							<div id="replyDisplayContainer${reply.id }">
 								<div class="fw-bold"><i class="fa-solid fa-comment"></i> ${reply.prettyInserted }</div>
 							 	${reply.content }
+							 	<!-- 수정버튼 -->
 							 	                                                <!--표준 attribute아님  -->
 							 	<button class="reply-edit-toggle-button" id = "replyEditToggleButton${reply.id }" data-reply-id="${reply.id }"><i class ="fa-solid fa-pen-to-square"></i></button>
 							 	
