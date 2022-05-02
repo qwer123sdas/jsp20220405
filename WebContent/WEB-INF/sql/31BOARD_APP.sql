@@ -26,11 +26,16 @@ SET inserted = DATE_SUB(inserted, INTERVAL 1 DAY);
 -- 다대다 (n대 n)
 -- 학생(이름, 생년월일....), 회사(회사명, ...) ,,,, 여러 학생은 취업하기 원하는 회사가 같은 회사로 겹칠 수 도 있고 = 같은 회사를 여러 학생이 희망
 
+
+DROP TABLE reply;
 -- 댓글 작성 테이블(게시물 테이블 참조)
-CREATE TABLE reply(
+CREATE TABLE Reply(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	board_id INT,                             -- foreign key(참조키, 외래키)
 	content VARCHAR(255) NOT NULL,
     inserted DATETIME DEFAULT NOW(),
     FOREIGN KEY(board_id) REFERENCES Board(id)   -- FOREIGN KEY 제약사항 추가
 );
+
+
+SELECT * FROM Reply;

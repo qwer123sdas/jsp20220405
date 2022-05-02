@@ -93,8 +93,9 @@
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
-				<form action=""  method="post">
+				<form action="${appRoot }/reply/insert"  method="post">
 				<div class="input-group" >
+					<input type="hidden" name="boardId" value="${board.id }"/>
 					<input class = "form-control" type="text" name = "replyContent" required />
 					<button class="btn btn-outline-secondary"><i class = "fa-solid fa-comment-dots"></i></button>
 				</div>
@@ -103,5 +104,6 @@
 		</div>
 	</div>
 	
+
 </body>
 </html>
