@@ -145,6 +145,7 @@
 							 	
 							 	<!--삭제버튼  -->
 							 	<!-- button.reply-delete-button[data-reply-id] -->
+							 										<!--표준 attribute아님 + replyDeleteInput1으로 reply의 id보내기 -->
 							 	<button class="reply-delete-button" data-reply-id="${reply.id }">
 							 		<i class="fa-solid fa-trash-can"></i>
 							 	</button>
