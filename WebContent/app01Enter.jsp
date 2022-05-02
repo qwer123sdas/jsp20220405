@@ -15,6 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath() %>/board/list">들어가기</a>
+	<a href="<%=request.getContextPath() %>/board/list">들어가기 임시 수정</a>
 </body>
 </html>
