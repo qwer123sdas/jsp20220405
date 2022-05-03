@@ -61,10 +61,13 @@ public class BoardDao {
 		return result == 1;
 	}
 
-	// 읽기---------------------------------------------------------------------------------------------------
+	// 읽기 + 댓글 수 읽기--------------------------------------------------------------------------------------------------
 	public List<BoardDto> list(Connection con) {
 		List<BoardDto> list = new ArrayList<BoardDto>();
-		String sql = "SELECT id, title, inserted FROM Board ORDER BY id DESC";
+		String sql = "SELECT b.id, b.title, b.inserted, COUNT(r.id) numOfReply "
+				+ "FROM Board b LEFT JOIN Reply r ON b.id = r.board_id "
+				+ "GROUP BY b.id "
+				+ "ORDER BY b.id DESC";
 		
 		try(Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);){
@@ -73,6 +76,7 @@ public class BoardDao {
 				board.setId(rs.getInt(1));
 				board.setTitle(rs.getString(2));
 				board.setInserted(rs.getTimestamp(3).toLocalDateTime());
+				board.setNumOfReply(rs.getInt(4));
 				
 				list.add(board);
 			}
@@ -85,8 +89,10 @@ public class BoardDao {
 
 	// 선택하여 게시글 보여주기---------------------------------------------------------------------------------------------------
 	public BoardDto get(Connection con, int id) {
-		String sql = "SELECT id, title, body, inserted "
-				+ "FROM Board WHERE id = ?";
+		String sql = "SELECT b.id, b.title, b.body, b.inserted, COUNT(r.id) numOfReply "
+				+ "FROM Board b LEFT JOIN Reply r "
+				+ "ON b.id = r.board_id "
+				+ "WHERE b.id = ?";
 		try(PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setInt(1, id);
 			try(ResultSet rs = pstmt.executeQuery()){
@@ -96,6 +102,7 @@ public class BoardDao {
 					board.setTitle(rs.getString(2));
 					board.setBody(rs.getString(3));
 					board.setInserted(rs.getTimestamp(4).toLocalDateTime());
+					board.setNumOfReply(rs.getInt(5));
 					
 					return board;
 				}

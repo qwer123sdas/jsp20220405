@@ -7,6 +7,7 @@ public class BoardDto {
 	private String title;
 	private String body;
 	private LocalDateTime inserted;
+	private int numOfReply;
 	
 	// 입력날짜를 깔끔하게 만드는 메소드
 	public String getPrettyInserted() {
@@ -43,6 +44,12 @@ public class BoardDto {
 	}
 	public void setInserted(LocalDateTime inserted) {
 		this.inserted = inserted;
+	}
+	public int getNumOfReply() {
+		return numOfReply;
+	}
+	public void setNumOfReply(int numOfReply) {
+		this.numOfReply = numOfReply;
 	}
 	
 }

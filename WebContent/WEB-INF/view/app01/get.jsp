@@ -134,6 +134,10 @@
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
+				<%-- <h3>댓글 ${replyList.size() } > </h3> --%>
+				<h3>댓글 ${board.numOfReply } > </h3>
+			
+			
 					<ul class="list-group" >
 						<c:forEach items="${replyList }" var="reply">
 							<li class="list-group-item">
