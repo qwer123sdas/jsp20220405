@@ -15,3 +15,13 @@ ON o.CustomerID = c.CustomerID
 group by c.CustomerName
 ORDER BY 2 DESC;
 
+USE mydb2;
+
+SELECT * FROM Board;
+SELECT b.id, b.title, b.body, b.inserted, COUNT(r.id) numOfReply
+FROM Board b LEFT JOIN Reply r On b.id = r.board_id
+where b.id =  5;
+
+
+-- 서브쿼리
+
