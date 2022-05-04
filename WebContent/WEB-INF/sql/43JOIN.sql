@@ -52,3 +52,14 @@ FROM Orders o JOIN Employees e ON o.EmployeeID = e.EmployeeID
 WHERE o.OrderDate BETWEEN '1996-01-01' AND '1996-12-31'
 GROUP BY e.EmployeeID  -- EmployeeName은 중복이 있을 수 있으므로 ID가 나음
 ORDER BY total DESC; 
+
+
+-- 가장 많은 상품수량이 팔린 카테고리
+SELECT p.ProductName, SUM(od.Quantity) total
+FROM Categories c JOIN Products p ON c.CategoryID = p.CategoryID
+					JOIN OrderDetails od ON od.ProductID = p.ProductID
+                    JOIN Orders o ON o.OrderID = od.OrderID
+WHERE o.OrderDate
+GROUP BY p.ProductName
+ORDER BY 2 DESC
+;
