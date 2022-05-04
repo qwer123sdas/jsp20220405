@@ -54,7 +54,7 @@ GROUP BY e.EmployeeID  -- EmployeeName은 중복이 있을 수 있으므로 ID�
 ORDER BY total DESC; 
 
 
--- 가장 많은 상품수량이 팔린 카테고리
+-- 가장 많은 상품수량이 팔린 상품
 SELECT p.ProductName, SUM(od.Quantity) total
 FROM Categories c JOIN Products p ON c.CategoryID = p.CategoryID
 					JOIN OrderDetails od ON od.ProductID = p.ProductID
@@ -63,3 +63,19 @@ WHERE o.OrderDate
 GROUP BY p.ProductName
 ORDER BY 2 DESC
 ;
+
+-- 가장 많은 상품수량이 팔린 카테고리
+SELECT c.CategoryID, c.CategoryName, SUM(od.Quantity) total
+FROM Categories c JOIN Products p ON c.CategoryID = p.CategoryID
+					JOIN OrderDetails od ON p.ProductID = od.ProductID
+GROUP BY c.CategoryID
+ORDER BY 3 DESC;
+
+SELECT c.CategoryID, c.CategoryName, IFNULL(SUM(od.Quantity), 0) total
+FROM Orders o JOIN OrderDetails od ON od.OrderID = o.OrderID
+									AND o.OrderDate BETWEEN '1996-08-01' AND '1996-08-07'
+				    JOIN Products p ON p.ProductID = od.ProductID
+					RIGHT JOIN Categories c ON c.CategoryID = p.CategoryID
+-- WHERE o.OrderDate BETWEEN '1996-08-01' AND '1996-08-07' 
+GROUP BY c.CategoryID
+ORDER BY 3 DESC;
