@@ -42,3 +42,13 @@ FROM OrderDetails od JOIN Products p ON od.ProductID = p.ProductID
 					JOIN Customers c ON o.CustomerID = c.CustomerID
 WHERE OrderDate = '1996-07-08'
 GROUP BY c.CustomerName;
+
+--  1996년 가장 많은 주문을 받은 직원을 뽑기
+-- 1996년 직원별 처리한 주문 총 금액을 조회(금액이 높은  -> 낮은 순으로 출력)
+SELECT concat(e.FirstName, ' ', e.LastName) Name, SUM(od.Quantity * p.Price) total
+FROM Orders o JOIN Employees e ON o.EmployeeID = e.EmployeeID
+				JOIN OrderDetails od ON o.OrderID = od.OrderID
+				JOIN Products p ON od.ProductID = p.ProductID
+WHERE o.OrderDate BETWEEN '1996-01-01' AND '1996-12-31'
+GROUP BY e.EmployeeID  -- EmployeeName은 중복이 있을 수 있으므로 ID가 나음
+ORDER BY total DESC; 
