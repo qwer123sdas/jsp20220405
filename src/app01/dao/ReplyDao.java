@@ -3,6 +3,7 @@ package app01.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -87,6 +88,20 @@ public class ReplyDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public void deleteByBoardId(Connection con, int id) throws SQLException {
+		String sql = "DELETE FROM Reply "
+				+ "WHERE board_id = ? ";
+		// 예외가 발생해야 밖의 rollback으로 가기 때문에 예외를 넘긴다.
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		
+		
 	}
 	
 }
