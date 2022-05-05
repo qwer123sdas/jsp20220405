@@ -17,7 +17,7 @@ CREATE TABLE Employees_chong(
 
 CREATE TABLE Employees_insa(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    address VARCHAR(255)
+    salary INT
 );
 
 
